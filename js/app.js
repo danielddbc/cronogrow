@@ -235,3 +235,34 @@ window.addEventListener('DOMContentLoaded', async () => {
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
+
+// ── Carregar páginas externas dinamicamente ──────────────────────
+async function carregarPagina(nome, src) {
+  if (document.querySelector(`script[data-page="${nome}"]`)) return;
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src; s.dataset.page = nome;
+    s.onload = resolve; s.onerror = reject;
+    document.body.appendChild(s);
+  });
+}
+
+// Sobrescrever stubs com carregamento real
+['ciclos','plantas','tarefas','diario','galeria','relatorios','config'].forEach(p => {
+  Router.registrar(p, async (el) => {
+    await carregarPagina(p, `pages/${p}.js`);
+    // Re-navegar após carregar o script (que re-registra a rota)
+    await Router.navegar(p);
+  });
+});
+
+// Rotas dinâmicas de planta (planta-PLT001, etc.)
+const _navegar = Router.navegar.bind(Router);
+Router.navegar = async function(rota) {
+  if (rota && rota.startsWith('planta-')) {
+    const id = rota.replace('planta-', '');
+    await carregarPagina('planta', 'pages/planta.js');
+    registrarRotaPlanta(id);
+  }
+  return _navegar(rota);
+};
