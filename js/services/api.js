@@ -3,7 +3,7 @@
 const API = (() => {
   // ⚠️ COLE AQUI a URL gerada no deploy do Apps Script (Etapa 2).
   // Isso fixa a URL no código-fonte — não depende mais do localStorage do navegador.
-  const BASE_URL = "COLE_SUA_URL_DO_APPS_SCRIPT_AQUI";
+  const BASE_URL = "https://script.google.com/macros/s/AKfycbxWQtMbKon8PMmuBZnuXBirBwR4xE2iTXNE848k311ARWM_F9O01OijXUcN1YHAjw0w/exec";
 
   function token() { return localStorage.getItem('cg_token') || ''; }
 
