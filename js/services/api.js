@@ -1,8 +1,9 @@
 /* CRONOGROW — Serviço de API */
 
 const API = (() => {
-  // ⚠️ Substitua pela URL gerada no deploy do Apps Script
-  const BASE_URL = localStorage.getItem('cg_api_url') || '';
+  // ⚠️ COLE AQUI a URL gerada no deploy do Apps Script (Etapa 2).
+  // Isso fixa a URL no código-fonte — não depende mais do localStorage do navegador.
+  const BASE_URL = "COLE_SUA_URL_DO_APPS_SCRIPT_AQUI";
 
   function token() { return localStorage.getItem('cg_token') || ''; }
 
@@ -74,7 +75,7 @@ const API = (() => {
     upload,
     getRelatorio:   p          => get('relatorio', p),
     salvarConfig:   b          => post('config', b),
-    setApiUrl:      url        => localStorage.setItem('cg_api_url', url),
-    getApiUrl:      ()         => localStorage.getItem('cg_api_url') || ''
+    setApiUrl:      url        => { /* não usado mais — URL é fixa no código */ },
+    getApiUrl:      ()         => BASE_URL
   };
 })();
