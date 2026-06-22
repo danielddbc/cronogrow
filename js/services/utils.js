@@ -1,10 +1,18 @@
 /* CRONOGROW — Utilitários */
 const Utils = {
-  // Formata data YYYY-MM-DD → DD/MM/AAAA
+  // Formata data YYYY-MM-DD (ou ISO completo "...T...") → DD/MM/AAAA
   formatarData(data) {
     if (!data) return '—';
-    const [a, m, d] = String(data).split('T')[0].split('-');
+    const partes = String(data).split('T')[0].split('-');
+    if (partes.length !== 3) return '—';
+    const [a, m, d] = partes;
     return `${d}/${m}/${a}`;
+  },
+  // Extrai só "YYYY-MM-DD" de uma data, mesmo que venha como ISO completo.
+  // Usar sempre que for preencher um <input type="date">, que só aceita esse formato.
+  somenteData(data) {
+    if (!data) return '';
+    return String(data).split('T')[0];
   },
   // Hoje em YYYY-MM-DD
   hoje() { return new Date().toISOString().slice(0, 10); },
