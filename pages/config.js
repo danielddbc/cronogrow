@@ -41,11 +41,14 @@ Router.registrar('config', async (el) => {
     <!-- API -->
     <div class="card" style="margin-bottom:var(--gap-lg)">
       <div class="card-titulo">🔗 URL da API</div>
-      <div class="campo">
-        <label>Apps Script URL</label>
-        <input type="url" id="cfg-api" value="${Utils.esc(apiUrl)}" placeholder="https://script.google.com/macros/s/.../exec" />
-      </div>
-      <button class="btn btn-outline btn-sm" style="margin-top:var(--gap-md)" id="btn-salvar-api">Atualizar URL</button>
+      <p style="font-size:.8rem;color:var(--txt-terciario);word-break:break-all;background:var(--bg-input);
+        padding:var(--gap-sm) var(--gap-md);border-radius:var(--radius-md);border:1px solid var(--borda)">
+        ${Utils.esc(apiUrl)}
+      </p>
+      <p style="font-size:.78rem;color:var(--txt-terciario);margin-top:var(--gap-sm)">
+        Esta URL agora é fixa no código-fonte (<code>js/services/api.js</code>). Para alterá-la,
+        edite o arquivo diretamente no GitHub.
+      </p>
     </div>
 
     <!-- Senha -->
@@ -120,13 +123,6 @@ Router.registrar('config', async (el) => {
     Toast.ok('Nome atualizado!');
   };
 
-  document.getElementById('btn-salvar-api').onclick = () => {
-    const url = document.getElementById('cfg-api').value.trim();
-    if (!url.startsWith('https://script.google.com')) { Toast.erro('URL inválida.'); return; }
-    API.setApiUrl(url);
-    Toast.ok('URL da API atualizada! Recarregando...');
-    setTimeout(() => location.reload(), 1500);
-  };
 
   document.getElementById('btn-salvar-senha').onclick = async () => {
     const atual = document.getElementById('cfg-senha-atual').value;
@@ -159,11 +155,12 @@ function abrirPlanilha() {
 }
 
 async function limparCache() {
-  const ok = await Modal.confirmar('Limpar cache', 'Remove preferências locais. Você precisará inserir a URL da API novamente.');
+  const ok = await Modal.confirmar('Limpar cache', 'Remove preferências locais (tema, sessão). Você precisará fazer login novamente.');
   if (!ok) return;
-  const apiUrl = API.getApiUrl();
   Storage.clear();
-  API.setApiUrl(apiUrl); // manter a URL da API
+  localStorage.removeItem('cg_token');
+  localStorage.removeItem('cg_nome');
   Toast.ok('Cache limpo!');
   setTimeout(() => location.reload(), 1000);
 }
+
