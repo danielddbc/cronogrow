@@ -114,7 +114,7 @@ async function editarEntrada(id) {
   Modal.abrir('Editar anotação', `
     <div class="campo">
       <label>Data</label>
-      <input type="date" id="edit-dia-data" value="${e.data||Utils.hoje()}" />
+      <input type="date" id="edit-dia-data" value="${Utils.somenteData(e.data)||Utils.hoje()}" />
     </div>
     <div class="campo">
       <label>Título</label>
