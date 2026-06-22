@@ -121,36 +121,22 @@ Router.registrar('dashboard', async (el) => {
 
 // ── Setup tela de login ──────────────────────────────────────────
 async function setupLogin() {
-  // Verificar se há usuário cadastrado via ping + checagem local
-  const temUrl = !!API.getApiUrl();
   const telaLogin = document.getElementById('tela-login');
   const loginTitulo = document.getElementById('login-titulo');
   const campoNome = document.getElementById('campo-nome');
   const btnEntrar = document.getElementById('btn-entrar');
   const loginErro = document.getElementById('login-erro');
 
-  // Se URL da API ainda não foi configurada, pedir
-  if (!temUrl) {
+  // A URL da API agora é fixa no código (js/services/api.js).
+  // Se ainda estiver com o valor padrão, avisamos para configurar.
+  if (!API.getApiUrl() || API.getApiUrl().includes('COLE_SUA_URL')) {
     document.getElementById('login-form').innerHTML = `
-      <h2>Configurar API</h2>
-      <p style="color:var(--txt-secundario);font-size:.875rem;margin-bottom:var(--gap-md)">
-        Cole abaixo a URL gerada no deploy do Apps Script:
-      </p>
-      <div class="campo">
-        <label>URL da API</label>
-        <input type="url" id="inp-api-url" placeholder="https://script.google.com/macros/s/.../exec" />
-      </div>
-      <button class="btn btn-primary btn-full" id="btn-salvar-url" style="margin-top:var(--gap-md)">Salvar e continuar</button>
-      <p class="login-msg" id="login-erro"></p>`;
-    document.getElementById('btn-salvar-url').onclick = () => {
-      const url = document.getElementById('inp-api-url').value.trim();
-      if (!url.startsWith('https://script.google.com')) {
-        document.getElementById('login-erro').textContent = 'URL inválida. Verifique e tente novamente.';
-        return;
-      }
-      API.setApiUrl(url);
-      location.reload();
-    };
+      <h2>⚠️ Configuração necessária</h2>
+      <p style="color:var(--txt-secundario);font-size:.875rem;line-height:1.5">
+        A URL da API ainda não foi definida no código. Abra
+        <code style="background:var(--bg-input);padding:2px 6px;border-radius:4px">js/services/api.js</code>
+        e cole a URL do seu Apps Script na constante <code>BASE_URL</code>.
+      </p>`;
     telaLogin.classList.remove('hidden');
     return;
   }
