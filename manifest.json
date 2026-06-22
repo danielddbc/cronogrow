@@ -2,7 +2,8 @@
   "name": "CronoGrow",
   "short_name": "CronoGrow",
   "description": "Seu cultivo organizado no tempo.",
-  "start_url": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0D1F0E",
   "theme_color": "#0D1F0E",
@@ -15,3 +16,4 @@
   "categories": ["lifestyle", "productivity"],
   "screenshots": []
 }
+
