@@ -1,12 +1,11 @@
 /* CRONOGROW — Service Worker (PWA offline) */
-const CACHE = 'cronogrow-v1';
+const CACHE = 'cronogrow-v2';
 const SHELL = [
-  '/', '/index.html',
-  '/css/variables.css', '/css/reset.css', '/css/main.css', '/css/components.css',
-  '/js/services/api.js', '/js/services/storage.js', '/js/services/utils.js',
-  '/js/auth.js', '/js/router.js', '/js/app.js',
-  '/manifest.json',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap'
+  './', './index.html',
+  './css/variables.css', './css/reset.css', './css/main.css', './css/components.css',
+  './js/services/api.js', './js/services/storage.js', './js/services/utils.js',
+  './js/auth.js', './js/router.js', './js/app.js',
+  './manifest.json'
 ];
 
 self.addEventListener('install', e => {
