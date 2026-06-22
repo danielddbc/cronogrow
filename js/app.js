@@ -103,7 +103,7 @@ Router.registrar('dashboard', async (el) => {
                 <div style="font-size:.72rem;color:var(--txt-terciario)">${Utils.formatarData(e.data)}</div>
               </div>
             </div>`).join('')}
-        <button class="btn btn-ghost btn-sm" style="margin-top:var(--gap-sm)" onclick="Router.navegar('timeline')">Ver timeline →</button>
+        <button class="btn btn-ghost btn-sm" style="margin-top:var(--gap-sm)" onclick="Router.navegar('plantas')">Ver plantas →</button>
       </div>
     </div>`;
 });
@@ -117,48 +117,6 @@ Router.registrar('dashboard', async (el) => {
       <p>Esta tela chegará na próxima etapa.</p>
     </div>`;
   });
-});
-
-// "Timeline" no menu não é uma tela própria — a linha do tempo de eventos
-// vive dentro de cada planta (pages/planta.js). Esta rota decide para qual
-// planta levar o usuário quando ele clica em "Timeline" na navbar.
-Router.registrar('timeline', async (el) => {
-  el.innerHTML = '<div class="loader-inline">Abrindo timeline...</div>';
-  const resPlantas = await API.getPlantas({ status: 'ativa' });
-  const plantas = resPlantas.dados || [];
-
-  if (plantas.length === 0) {
-    el.innerHTML = `<div class="estado-vazio">
-      <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/></svg>
-      <h3>Nenhuma planta ativa</h3>
-      <p>Cadastre uma planta para começar a registrar sua linha do tempo.</p>
-      <button class="btn btn-primary" style="margin-top:var(--gap-md)" onclick="Router.navegar('plantas')">Ir para Plantas</button>
-    </div>`;
-    return;
-  }
-
-  if (plantas.length === 1) {
-    // Só uma planta ativa — vai direto para a timeline dela
-    await Router.navegar('planta-' + plantas[0].id);
-    return;
-  }
-
-  // Mais de uma planta — pede para escolher qual timeline ver
-  el.innerHTML = `
-    <div class="page-header">
-      <div>
-        <h1 class="page-titulo">📅 Timeline</h1>
-        <p class="page-subtitulo">Escolha a planta para ver a linha do tempo</p>
-      </div>
-    </div>
-    <div class="grid-2">
-      ${plantas.map(p => `
-        <div class="planta-card" style="border-left-color:${p.cor||'#2ECC71'}"
-             onclick="Router.navegar('planta-' + '${p.id}')">
-          <div class="planta-card-nome">${Utils.esc(p.nome)}</div>
-          <div class="planta-card-codigo">${Utils.esc(p.codigo)}</div>
-        </div>`).join('')}
-    </div>`;
 });
 
 
