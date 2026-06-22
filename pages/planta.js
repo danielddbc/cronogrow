@@ -80,7 +80,7 @@ async function carregarPlanta(el, id) {
             <div class="timeline-conteudo">
               <div class="timeline-dia">Dia ${e.dia_relativo || 0}</div>
               <div class="timeline-tipo">${Utils.eventoNome[e.tipo] || e.tipo}${e.subtipo ? ` · ${e.subtipo}` : ''}</div>
-              <div class="timeline-data">${Utils.formatarData(e.data)}${e.hora ? ' às ' + e.hora : ''}</div>
+              <div class="timeline-data">${Utils.formatarData(e.data)}</div>
               ${e.observacoes ? `<div class="timeline-obs">${Utils.esc(e.observacoes)}</div>` : ''}
               <div style="display:flex;gap:var(--gap-sm);margin-top:var(--gap-xs)">
                 <button class="btn btn-ghost btn-sm" onclick="verFotosEvento('${e.id}','${p.id}')">📷 Fotos</button>
