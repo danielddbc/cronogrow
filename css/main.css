@@ -9,6 +9,8 @@
 }
 .loading-logo { display: flex; flex-direction: column; align-items: center; gap: var(--gap-md); }
 .loading-nome { font-family: var(--fonte-display); font-size: 1.8rem; font-weight: 700; color: var(--cor-primaria); }
+.logo-girando { animation: pulsar 1.6s ease-in-out infinite; }
+@keyframes pulsar { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: 0.85; } }
 .loading-spinner {
   width: 32px; height: 32px; border: 3px solid var(--borda);
   border-top-color: var(--cor-primaria); border-radius: 50%;
@@ -31,7 +33,7 @@
   display: flex; flex-direction: column; align-items: center;
   gap: var(--gap-sm); margin-bottom: var(--gap-xl); text-align: center;
 }
-.login-logo h1 { font-family: var(--fonte-display); font-size: 1.6rem; color: var(--cor-primaria); }
+.login-logo-img { width: 100%; max-width: 240px; height: auto; margin-bottom: var(--gap-xs); }
 .login-logo p  { color: var(--txt-secundario); font-size: 0.875rem; }
 .login-form h2 { font-family: var(--fonte-display); margin-bottom: var(--gap-lg); font-size: 1.1rem; }
 .login-msg { margin-top: var(--gap-md); font-size: 0.85rem; color: var(--vermelho); text-align: center; min-height: 20px; }
