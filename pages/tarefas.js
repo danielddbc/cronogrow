@@ -121,7 +121,7 @@ async function editarTarefa(id) {
     </div>
     <div class="campo">
       <label>Data limite</label>
-      <input type="date" id="edit-tar-prazo" value="${t.data_prazo||''}" />
+      <input type="date" id="edit-tar-prazo" value="${Utils.somenteData(t.data_prazo)}" />
     </div>
     <button class="btn btn-primary btn-full" id="btn-upd-tar">Salvar</button>`,
     { onOpen: () => {
