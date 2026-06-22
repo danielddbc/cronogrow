@@ -12,8 +12,9 @@
   <title>CronoGrow</title>
 
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
 
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,14 +32,7 @@
   <!-- ── Tela de loading ──────────────────────────────── -->
   <div id="loading-screen" class="loading-screen">
     <div class="loading-logo">
-      <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-        <circle cx="28" cy="28" r="27" stroke="#2ECC71" stroke-width="2" opacity="0.3"/>
-        <path d="M28 10 C28 10 18 22 18 30 C18 38 28 46 28 46 C28 46 38 38 38 30 C38 22 28 10 28 10Z"
-              fill="#2ECC71" opacity="0.9"/>
-        <path d="M28 20 L28 44" stroke="#0D1F0E" stroke-width="2" stroke-linecap="round"/>
-        <path d="M28 28 C28 28 22 24 20 20" stroke="#0D1F0E" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M28 32 C28 32 34 28 36 24" stroke="#0D1F0E" stroke-width="1.5" stroke-linecap="round"/>
-      </svg>
+      <img src="assets/logo/simbolo.png" alt="CronoGrow" width="64" height="64" class="logo-girando" />
       <span class="loading-nome">CronoGrow</span>
     </div>
     <div class="loading-spinner"></div>
@@ -48,13 +42,7 @@
   <div id="tela-login" class="tela-login hidden">
     <div class="login-card">
       <div class="login-logo">
-        <svg width="48" height="48" viewBox="0 0 56 56" fill="none">
-          <path d="M28 6 C28 6 14 22 14 32 C14 42 28 50 28 50 C28 50 42 42 42 32 C42 22 28 6 28 6Z" fill="#2ECC71"/>
-          <path d="M28 16 L28 46" stroke="#0D1F0E" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M28 30 C28 30 20 25 18 20" stroke="#0D1F0E" stroke-width="2" stroke-linecap="round"/>
-          <path d="M28 35 C28 35 36 30 38 25" stroke="#0D1F0E" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <h1>CronoGrow</h1>
+        <img src="assets/logo/logo-completa.png" alt="CronoGrow" class="login-logo-img" />
         <p>Seu cultivo organizado no tempo</p>
       </div>
       <div id="login-form" class="login-form">
@@ -79,12 +67,7 @@
     <!-- Navbar lateral (desktop) / bottom (mobile) -->
     <nav class="navbar" id="navbar">
       <div class="navbar-logo">
-        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
-          <path d="M28 6 C28 6 14 22 14 32 C14 42 28 50 28 50 C28 50 42 42 42 32 C42 22 28 6 28 6Z" fill="#2ECC71"/>
-          <path d="M28 16 L28 46" stroke="#0D1F0E" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M28 30 C28 30 20 25 18 20" stroke="#0D1F0E" stroke-width="2" stroke-linecap="round"/>
-          <path d="M28 35 C28 35 36 30 38 25" stroke="#0D1F0E" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <img src="assets/logo/simbolo.png" alt="CronoGrow" width="28" height="28" />
         <span class="navbar-nome">CronoGrow</span>
       </div>
       <ul class="nav-links" id="nav-links">
